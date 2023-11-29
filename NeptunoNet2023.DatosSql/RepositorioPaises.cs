@@ -1,4 +1,5 @@
 ﻿using NeptunoNet2023.Comun.Interfaces;
+using NeptunoNet2023.Entidades.Dtos.ComboDto;
 using NeptunoNet2023.Entidades.Entidades;
 using System.Configuration;
 using System.Data;
@@ -235,5 +236,53 @@ namespace NeptunoNet2023.DatosSql
 			}
 			return pais;
 		}
-	}
+
+        public List<PaisComboDto> GetComboDtos()
+        {
+			PaisComboDto pais = null;
+			List<PaisComboDto> lista = new List<PaisComboDto>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string selectQuery = @"SELECT PaisId, NombrePais FROM Paises
+						";
+                using (var cmd = new SqlCommand(selectQuery, conn))
+                {
+                  
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                          
+                            pais = ConstruirPaisComboDto(reader);
+							lista.Add(pais);
+                        }
+                    }
+                }
+				
+            }
+            return lista;
+        }
+
+        private PaisComboDto ConstruirPaisComboDto(SqlDataReader reader)
+        {
+			return new PaisComboDto
+			{
+				PaisId = reader.GetInt32(0),
+				NombrePais = reader.GetString(1)
+
+
+			};
+        }
+        //private PaisComboDto ConstruirPaisComboDto(SqlDataReader reader)
+        //{
+        //    return new PaisComboDto
+        //    {
+        //        PaisId = reader.GetInt32(0),
+        //        NombrePais = reader.GetString(1)
+
+
+        //    };
+        //}
+    }
 }

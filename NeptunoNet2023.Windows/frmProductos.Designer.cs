@@ -201,6 +201,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            ControlBox = false;
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(toolStrip1);

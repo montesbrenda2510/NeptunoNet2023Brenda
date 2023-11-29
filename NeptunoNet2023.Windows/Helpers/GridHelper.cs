@@ -1,4 +1,5 @@
-﻿using NeptunoNet2023.Entidades.Dtos.Ciudad;
+﻿using NeptunoNet2023.Entidades.Dtos;
+using NeptunoNet2023.Entidades.Dtos.Ciudad;
 using NeptunoNet2023.Entidades.Entidades;
 
 namespace NeptunoNet2023.Windows.Helpers
@@ -37,7 +38,16 @@ namespace NeptunoNet2023.Windows.Helpers
 					r.Cells[0].Value = ciudad.NombreCiudad;
 					r.Cells[1].Value = ciudad.NombrePais;
 					break;
-				default:
+				case ClienteDto cliente:
+					r.Cells[0].Value = cliente.NombreCliente;
+					r.Cells[1].Value = cliente.NombrePais;
+					r.Cells[2].Value = cliente.NombreCiudad;
+					break;
+				case ProductoDto producto:
+					r.Cells[0].Value = producto.NombreProducto;
+					r.Cells[1].Value = producto.NombreCategoria;
+					r.Cells[2].Value = producto.PrecioUnitario;
+					r.Cells[3].Value = producto.Strock;
 					break;
 
 			}

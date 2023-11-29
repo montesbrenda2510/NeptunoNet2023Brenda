@@ -20,10 +20,10 @@ namespace NeptunoNet2023.DatosSql
             return new ClienteDto
             {
                 
-                
-                NombreCliente = reader.GetString(0),
-                NombrePais=reader.GetString(1),
-                NombreCiudad = reader.GetString(2)
+                ClienteId=reader.GetInt32(0),
+                NombreCliente = reader.GetString(1),
+                NombrePais=reader.GetString(2),
+                NombreCiudad = reader.GetString(3)
             };
         }
 
@@ -33,10 +33,10 @@ namespace NeptunoNet2023.DatosSql
             using (var conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
-                string selectQuery = @"SELECT cl.NombreCliente, p.NombrePais , c.NombreCiudad
+                string selectQuery = @"SELECT cl.ClienteId, cl.NombreCliente, p.NombrePais , c.NombreCiudad
                         FROM Clientes cl
                         inner join Ciudades c on cl.CiudadId=c.CiudadId
-						inner join Paises p on cl.PaisId= c.PaisId";
+						inner join Paises p on cl.PaisId= p.PaisId";
                 using (var cmd = new SqlCommand(selectQuery, conn))
                 {
                     using (var reader = cmd.ExecuteReader())

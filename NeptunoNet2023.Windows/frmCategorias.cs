@@ -23,8 +23,7 @@ namespace NeptunoNet2023.Windows
         {
             try
             {
-                listaCategorias = _serviciosCategorias.GetAll();
-                MostrarDatosEnGrilla();
+                RecargarGrilla();
             }
             catch (Exception)
             {
@@ -32,6 +31,13 @@ namespace NeptunoNet2023.Windows
                 throw;
             }
         }
+
+        private void RecargarGrilla()
+        {
+            listaCategorias = _serviciosCategorias.GetAll();
+            MostrarDatosEnGrilla();
+        }
+
         private void MostrarDatosEnGrilla()
         {
             GridHelper.LimpiarGrilla(dgvDatos);
@@ -62,11 +68,19 @@ namespace NeptunoNet2023.Windows
 
             var categoria = frm.GetAll();
 
-            _serviciosCategorias.Guardar(categoria);
+            if (!_serviciosCategorias.Existe(categoria))
+            {
 
+                _serviciosCategorias.Guardar(categoria);
+                MessageBox.Show("La categoria ha sido agregada", "Info", MessageBoxButtons.OK,MessageBoxIcon.Information);
 
-            listaCategorias = _serviciosCategorias.GetAll();
+                RecargarGrilla();
+            }
+            else
+            {
+                MessageBox.Show("La categoria ya existe", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            }
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -131,11 +145,7 @@ namespace NeptunoNet2023.Windows
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
-                _serviciosCategorias.Guardar(categoria);
-                GridHelper.SetearFila(r, categoria);
-               
-                MessageBox.Show($"Se edito el cliente {categoria.NombreCategoria} {categoria.Descripcion}"
-          , "Mansaje", MessageBoxButtons.OK);
+              
             }
             catch (Exception)
             {

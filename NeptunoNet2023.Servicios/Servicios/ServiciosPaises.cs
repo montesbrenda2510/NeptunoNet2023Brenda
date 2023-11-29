@@ -1,5 +1,6 @@
 ﻿using NeptunoNet2023.Comun.Interfaces;
 using NeptunoNet2023.DatosSql;
+using NeptunoNet2023.Entidades.Dtos.ComboDto;
 using NeptunoNet2023.Entidades.Entidades;
 using NeptunoNet2023.Servicios.Interfaces;
 
@@ -65,7 +66,20 @@ namespace NeptunoNet2023.Servicios.Servicios
 			}
 		}
 
-		public int Guardar(Pais pais)
+        public List<PaisComboDto> GetComboDtos()
+        {
+			try
+			{
+				return _repositorioPaises.GetComboDtos();
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+
+        public int Guardar(Pais pais)
 		{
 			try
 			{

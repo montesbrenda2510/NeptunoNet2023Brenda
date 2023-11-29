@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using NeptunoNet2023.Entidades.Dtos;
+using NeptunoNet2023.Servicios.Interfaces;
 using NeptunoNet2023.Servicios.Servicios;
 using NeptunoNet2023.Windows.Helpers;
 
@@ -7,7 +8,7 @@ namespace NeptunoNet2023.Windows
 {
     public partial class frmClientes : Form
     {
-        private readonly ServicioClientes _serviciosClientes;
+        private readonly IServiciosClientes _serviciosClientes;
 
         private List<ClienteDto> listaCliente;
         public frmClientes()
@@ -41,8 +42,8 @@ namespace NeptunoNet2023.Windows
                 GridHelper.SetearFila(r, item);
                 GridHelper.AgregarFila(r, dgvDatos);
             }
-            
-            
+
+
         }
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

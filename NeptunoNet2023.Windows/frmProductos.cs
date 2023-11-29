@@ -1,5 +1,6 @@
 ﻿using NeptunoNet2023.Entidades.Dtos;
 using NeptunoNet2023.Entidades.Entidades;
+using NeptunoNet2023.Servicios.Interfaces;
 using NeptunoNet2023.Servicios.Servicios;
 using NeptunoNet2023.Windows.Helpers;
 using System;
@@ -16,9 +17,9 @@ namespace NeptunoNet2023.Windows
 {
     public partial class frmProductos : Form
     {
-        private readonly ServicioProducto _serviciosProducto;
+        private readonly IServicioProducto _serviciosProducto;
         private List<ProductoDto> listaProducto;
-        
+
         public frmProductos()
         {
             InitializeComponent();

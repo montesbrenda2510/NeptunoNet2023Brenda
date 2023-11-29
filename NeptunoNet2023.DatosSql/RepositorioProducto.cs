@@ -24,7 +24,7 @@ namespace NeptunoNet2023.DatosSql
             using (var conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
-                string selectQuery = @"SELECT p.NombreProducto, c.NombreCategoria , p.PrecioUnitario, p.Stock
+                string selectQuery = @"SELECT p.ProductoId, p.NombreProducto, c.NombreCategoria , p.PrecioUnitario, p.Stock
                         FROM Productos p
                         inner join Categorias c on p.categoriaId=c.CategoriaId
 						";
@@ -47,10 +47,11 @@ namespace NeptunoNet2023.DatosSql
         {
             return new ProductoDto
             {
-                NombreProducto=reader.GetString(0),
-                NombreCategoria=reader.GetString(1),
-                PrecioUnitario=reader.GetDecimal(2),
-                Strock=reader.GetInt32(3)
+                ProductoId=reader.GetInt32(0),
+                NombreProducto=reader.GetString(1),
+                NombreCategoria=reader.GetString(2),
+                PrecioUnitario=reader.GetDecimal(3),
+                Strock=reader.GetInt32(4)
                 
             };
         }

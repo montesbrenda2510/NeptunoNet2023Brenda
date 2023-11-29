@@ -45,6 +45,65 @@ namespace NeptunoNet2023.Windows
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            //    if (ValidarDatos())
+            //    {
+            //        if (categoria == null)
+            //        {
+            //            categoria = new Categoria();
+
+            //        }
+            //        categoria.NombreCategoria = txtCategoria.Text;
+            //        categoria.Descripcion = txtDescripcion.Text;
+            //        try
+            //        {
+
+            //            if (!_servicio.Existe(categoria))
+            //            {
+            //                _servicio.Guardar(categoria);
+
+            //                if (!esEdicion)
+            //                {
+            //                    MessageBox.Show("Registro agregado",
+            //                "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                    DialogResult dr = MessageBox.Show("¿Desea agregar otro registro?",
+            //                        "Pregunta",
+            //                        MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+            //                        MessageBoxDefaultButton.Button2);
+            //                    if (dr == DialogResult.No)
+            //                    {
+            //                        DialogResult = DialogResult.OK;
+
+            //                    }
+            //                    categoria = null;
+            //                    InicializarControles();
+
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("Registro editado", "Mensaje",
+            //                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                    DialogResult = DialogResult.OK;
+
+            //                }
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("Registro duplicado",
+            //                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //                categoria = null;
+            //            }
+
+            //        }
+            //        catch (Exception ex)
+            //        {
+
+            //            MessageBox.Show(ex.Message,
+            //"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            //        }
+
+
+            //    }
             if (ValidarDatos())
             {
                 if (categoria == null)
@@ -54,69 +113,10 @@ namespace NeptunoNet2023.Windows
                 }
                 categoria.NombreCategoria = txtCategoria.Text;
                 categoria.Descripcion = txtDescripcion.Text;
-                try
-                {
-
-                    if (!_servicio.Existe(categoria))
-                    {
-                        _servicio.Guardar(categoria);
-
-                        if (!esEdicion)
-                        {
-                            MessageBox.Show("Registro agregado",
-                        "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DialogResult dr = MessageBox.Show("¿Desea agregar otro registro?",
-                                "Pregunta",
-                                MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                                MessageBoxDefaultButton.Button2);
-                            if (dr == DialogResult.No)
-                            {
-                                DialogResult = DialogResult.OK;
-
-                            }
-                            categoria = null;
-                            InicializarControles();
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Registro editado", "Mensaje",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DialogResult = DialogResult.OK;
-
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Registro duplicado",
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        categoria = null;
-                    }
-
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message,
-        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
 
 
+                DialogResult = DialogResult.OK;
             }
-            //if (ValidarDatos())
-            //{
-            //    if (categoria == null)
-            //    {
-            //        categoria = new Categoria();
-
-            //    }
-            //    categoria.NombreCategoria = txtCategoria.Text;
-            //    categoria.Descripcion = txtDescripcion.Text;
-
-
-            //    DialogResult = DialogResult.OK;
-            //}
         }
         private void InicializarControles()
         {
@@ -150,7 +150,7 @@ namespace NeptunoNet2023.Windows
 
         internal void SetCategoria(Categoria categoria)
         {
-           this.categoria= categoria;   
+            this.categoria = categoria;
         }
     }
 }

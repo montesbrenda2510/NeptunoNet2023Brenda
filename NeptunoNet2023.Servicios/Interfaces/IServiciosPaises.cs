@@ -1,4 +1,5 @@
-﻿using NeptunoNet2023.Entidades.Entidades;
+﻿using NeptunoNet2023.Entidades.Dtos.ComboDto;
+using NeptunoNet2023.Entidades.Entidades;
 
 namespace NeptunoNet2023.Servicios.Interfaces
 {
@@ -11,6 +12,6 @@ namespace NeptunoNet2023.Servicios.Interfaces
 		bool Existe(Pais pais);
 		bool EstaRelacionado(Pais pais);
 
-
-	}
+        List<PaisComboDto> GetComboDtos();
+    }
 }
